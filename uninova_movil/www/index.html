@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="assets/lib/Ionicons/css/ionicons.css" rel="stylesheet">
+    
+    <!-- compiled css output -->
+    <link href="assets/css/ionic.app.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="assets/lib/ionic/js/ionic.bundle.js"></script>
+    <script src="assets/lib/ionic/js/angular/angular-resource.js"></script>
+
+    <!-- google maps javascript -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7qb3k-FgS2URpLbhNJH1KtfC4rmZUbMo"></script>
+
+    <script src="assets/lib/ionic-native-transitions/dist/ionic-native-transitions.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="app/app.module.js"></script>
+    <script src="app/app.route.js"></script>
+    <script src="app/app.run.js"></script>
+
+    <script src="app/shared/strongloop-sdk/lb-services.js"></script>
+    
+    <script src="app/components/principal/menu-principal.controller.js"></script>
+    <script src="app/components/mision-vision/mision-vision.controller.js"></script>
+    <script src="app/components/oferta-educativa/oferta-principal.controller.js"></script>
+    <script src="app/components/infraestructura/infraestructura.controller.js"></script>
+    <script src="app/components/ubicacion/ubicacion.controller.js"></script>
+    <script src="app/components/usuario/datos-usuario.controller.js"></script>
+    <script src="app/components/login/login.controller.js"></script>
+    <script src="app/components/registro/registro.controller.js"></script>
+
+  </head>
+  <body ng-app="uninova">
+
+    <ion-nav-bar class="bar-assertive" align-title="center">
+      <ion-nav-back-button class="button-clear btn-back-margen">
+        <i class="ion-chevron-left medium"></i>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+
+
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

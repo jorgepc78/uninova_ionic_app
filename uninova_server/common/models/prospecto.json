@@ -1,0 +1,37 @@
+{
+  "name": "Prospecto",
+  "plural": "Prospectos",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nombres": {
+      "type": "string",
+      "required": true
+    },
+    "apellidos": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "num_registro": {
+      "type": "number"
+    },
+    "carrera_interes": {
+      "type": "string"
+    },
+    "fecha_alta": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

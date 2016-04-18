@@ -1,0 +1,9 @@
+{
+  "uninova_ds": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "uninova",
+    "name": "uninova_ds",
+    "connector": "mongodb"
+  }
+}

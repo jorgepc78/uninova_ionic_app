@@ -1,0 +1,33 @@
+<ion-view view-title="Tus datos">
+  <ion-content>
+
+      <ion-list>
+          <ion-item class="profile-item">
+              <div class="profile-picture big-profile-picture">
+                <img src="{{vm.usuario.foto}}">
+              </div>
+              <div class="profile-info"><a class="button button-icon icon ion-camera"></a></div>
+              <h2 class="profile-name dark">{{vm.usuario.nombres}}</h2>
+              <div class="profile-info">{{vm.usuario.apellidos}}</div>
+          </ion-item>
+          <ion-item class="item-icon-left">
+              <i class="icon ion-email"></i><span>{{vm.usuario.email}}</span>
+          </ion-item>
+          <ion-item class="item-icon-left">
+              <i class="icon ion-university"></i><span>{{vm.usuario.carrera}}</span>
+          </ion-item>
+          <ion-item class="item-icon-left">
+              <i class="icon ion-key"></i><span>{{vm.usuario.num_registro}}</span>
+          </ion-item>
+      
+      </ion-list>
+
+      <br>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="vm.logout()">Cerrar sesi&oacute;n</button>
+      </div>
+
+
+
+  </ion-content>
+</ion-view>

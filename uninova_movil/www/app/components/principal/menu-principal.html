@@ -1,0 +1,35 @@
+<ion-view>
+  <ion-nav-title>
+  		<img src="assets/img/uninova_header.png" height="30" style="margin: 4px;vertical-align:middle"><span>UNINOVA</span>
+  </ion-nav-title>
+  <ion-content scroll="false">
+
+		<div class="container-side-menu">
+		    <div class="btn-menu-principal" native-ui-sref="app.mision" native-options="{type: 'slide', direction:'up'}">
+				<button class="button button-icon blanco">
+	            	<i class="icon ion-home"></i> Misi&oacute;n y Visi&oacute;n
+	          	</button>    	
+		    </div>
+		    <div class="btn-menu-principal" native-ui-sref="app.oferta" native-options="{type: 'slide', direction:'up'}">
+				<button class="button button-icon blanco">
+	            	<i class="icon ion-university"></i> Oferta educativa
+	          	</button>		    	
+		    </div>
+		    <div class="btn-menu-principal" native-ui-sref="app.infraestructura" native-options="{type: 'slide', direction:'up'}">
+				<button class="button button-icon blanco">
+	            	<i class="icon ion-android-settings"></i> Instalaciones
+	          	</button>		    	
+		    </div>
+		    <div class="btn-menu-principal" native-ui-sref="app.ubicacion" native-options="{type: 'slide', direction:'up'}">
+				<button class="button button-icon blanco">
+	            	<i class="icon ion-location"></i> Ubicaci&oacute;n
+	          	</button>		    	
+		    </div>
+		    <div class="btn_completo" ng-click="vm.cargaDatosUsuario()" native-options="{type: 'slide', direction:'up'}">
+				<button class="button button-icon blanco">
+	            	<i class="icon ion-person"></i> Registro
+	          	</button>
+		    </div>
+		</div>
+  </ion-content>
+</ion-view>

@@ -1,5 +1,11 @@
-<ion-view view-title="Ubicaci&oacute;n">
-  <ion-content>
-		<div id="map" data-tap-disabled="true"></div>
-  </ion-content>
+<ion-view cache-view="false" view-title="Ubicaci&oacute;n">
+	 <ion-header-bar align-title="center" class="bar-assertive">
+	   <div class="buttons">
+	     <button class="button button-icon icon ion-android-menu" ng-click="vm.menuizq()"></button>
+	   </div>
+	   <h1 class="title">Donde estamos</h1>
+	 </ion-header-bar>
+	 <ion-content>
+			<div id="map" data-tap-disabled="true"></div>
+	 </ion-content>
 </ion-view>

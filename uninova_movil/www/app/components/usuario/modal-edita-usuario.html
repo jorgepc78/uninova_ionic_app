@@ -1,0 +1,42 @@
+<ion-modal-view cache-view="false">
+    <ion-header-bar class="bar bar-header bar-assertive">
+       <div class="buttons">
+          <button class="button button-icon icon ion-android-close" ng-click="vm.modal.hide()"></button>
+       </div>
+       <h1 class="title">Editar perfil</h1>
+       <div class="buttons">
+          <button class="button button-icon icon ion-ios-checkmark" ng-click="vm.guardar()"></button>
+       </div>
+    </ion-header-bar>
+
+    <ion-content scroll="true">
+
+          <div class="list">
+              <label class="item item-input input_login item-stacked-label">
+                <span class="input-label">Nombre(s)</span>
+                <input type="text" ng-model="vm.usuario.nombres">
+              </label>
+              <label class="item item-input input_login item-stacked-label">
+                <span class="input-label">Apellidos</span>
+                <input type="text" ng-model="vm.usuario.apellidos">
+              </label>
+              <label class="item item-input input_login-ultimo item-stacked-label">
+                <span class="input-label">E-mail</span>
+                <input type="email" ng-model="vm.usuario.email">
+              </label>
+            
+              <div class="item titulo_grupo_radio"> 
+                Carrera de inter&eacute;s
+              </div>
+              
+              <ion-radio ng-repeat="carrera in vm.listaCarreras"
+                         ng-value="carrera.valor"
+                         ng-model="vm.usuario.carrera"
+                         class="input_radio"
+                         >
+                <span style="white-space: normal;">{{ carrera.alias }}</span>
+              </ion-radio>
+          </div>
+
+    </ion-content>
+</ion-modal-view>

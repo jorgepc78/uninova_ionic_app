@@ -1,0 +1,80 @@
+<ion-view view-title="">
+  
+          <ion-header-bar class="bar-assertive" align-title="center">
+            <div class="buttons">
+              <button class="button button-icon icon ion-android-close" native-ui-sref="app.main" native-ui-sref-opts="{reload: true}" native-options="{type: 'slide', direction:'down'}" ng-click="vm.modal.hide()"></button>
+            </div>
+            <h1 class="title">Detalle de la licenciatura</h1>
+          </ion-header-bar>
+
+          <!-- <ion-content overflow-scroll='false' delegate-handle="userDetailContent" on-scroll="onUserDetailContentScroll()" header-shrink scroll-event-interval="5"> -->
+          <ion-content overflow-scroll='true'>
+
+              <div class="about-header">
+                            <div class="profile-media">
+                                  <div class="profile-details">
+                                        <img ng-src="assets/img/btn_carreras/{{vm.detalleCarrera.logo}}" class="profile-image">
+                                        <h5 class="color-white">
+                                          {{vm.detalleCarrera.nombre}}
+                                        </h5>
+                                  </div>
+                                  <img ng-src="assets/img/oferta_educativa/{{vm.detalleCarrera.fondo}}" class="about-image profile-background-image" style="vertical-align:middle;">
+                            </div>
+                <!-- <div class="row like-btn">
+                  <div class="col text-right">
+                    <div ng-class="liked ? 'bg-color-red like-button-with-text':'bg-color-white like-button'" ng-click="like()">
+                      <i class="ion-heart" ng-class="liked ? 'color-white':'color-red'"></i>
+                      <span ng-if="liked">Liked</span>
+                    </div>
+                  </div>
+                </div> -->
+            </div>
+            <h4 style="margin-left:10px;margin-right:10px;color:#000;">Objetivo</h4>
+            <p style="margin:10px;text-align:justify;">{{vm.detalleCarrera.objetivo}}</p>
+            
+            <br>
+            <h4 style="margin-left:10px;margin-right:10px;color:#000;">Modalidades disponibles</h4>
+            <div class="list list-inset">
+
+                    <div ng-repeat="group in vm.detalleCarrera.modalidades">
+                      <ion-item 
+                                ng-click="vm.toggleGroup(group)"
+                                ng-class="{active: vm.isGroupShown(group)}">
+                          <i class="icon" ng-class="vm.isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                        &nbsp;
+                        {{group.name}}
+                      </ion-item>
+                      <ion-item class="item-accordion"
+                                ng-repeat="item in group.items"
+                                ng-show="vm.isGroupShown(group)" ng-bind-html="item">
+                        
+
+                      </ion-item>
+                    </div>
+            </div>
+
+            <h4 style="margin-left:10px;margin-right:10px;color:#000;">Asignaturas</h4>
+            <div class="list list-inset">
+
+                    <div ng-repeat="group in vm.detalleCarrera.asignaturas">
+                      <ion-item 
+                                ng-click="vm.toggleGroup(group)"
+                                ng-class="{active: vm.isGroupShown(group)}">
+                          <i class="icon" ng-class="vm.isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                        &nbsp;
+                        {{group.name}}
+                      </ion-item>
+                      <ion-item class="item-accordion"
+                                ng-repeat="item in group.items"
+                                ng-show="vm.isGroupShown(group)" ng-bind-html="item">
+                        
+
+                      </ion-item>
+                    </div>
+            </div>
+            <br>
+
+          </ion-content>
+
+
+</ion-view>

@@ -1,28 +1,52 @@
-<ion-view view-title="Registro">
-  <ion-content>
-    <div class="list">
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Nombre(s)</span>
-        <input type="text" ng-model="vm.user.nombres">
-      </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Apellidos</span>
-        <input type="text" ng-model="vm.user.apellidos">
-      </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Correo electr&oacute;nico</span>
-        <input type="email" ng-model="vm.user.email">
-      </label>
-      <label class="item item-input item-select">
-        <div class="input-label">Carrera inter&eacute;s</div>
-          <select 
-              ng-model="vm.user.carrera"
-              ng-options="carrera as carrera.alias for carrera in vm.listaCarreras">
-          </select>
-      </label>
-    </div>
-    <div class="padding">
-      <button class="button button-block button-positive" ng-click="vm.registrarse()">Registrarse</button>
-    </div>
+<ion-view view-title="Registro" cache-view="false">
+
+   <ion-header-bar align-title="center" class="bar-assertive">
+     <div class="buttons">
+       <button class="button button-icon icon ion-ios-arrow-back" native-ui-sref="app.login" native-ui-sref-opts="{reload: true}" native-options="{type: 'slide', direction:'right'}"></button>
+     </div>
+     <h1 class="title">Registro</h1>
+   </ion-header-bar>
+
+  <ion-content scroll="true">
+        <ion-pane class="fondo_login" style="height:60%; position:relative;">
+            <div class="logo_login"></div>
+        </ion-pane>
+
+        <ion-pane style="position:relative;">
+                    <div class="list list-inset" style="margin-top: 0;">
+                        <label class="item item-input input_login item-stacked-label">
+                          <span class="input-label">Nombre(s)</span>
+                          <input type="text" ng-model="vm.user.nombres">
+                        </label>
+                        <label class="item item-input input_login item-stacked-label">
+                          <span class="input-label">Apellidos</span>
+                          <input type="text" ng-model="vm.user.apellidos">
+                        </label>
+                        <label class="item item-input input_login-ultimo item-stacked-label">
+                          <span class="input-label">E-mail</span>
+                          <input type="email" ng-model="vm.user.email">
+                        </label>
+
+                        <div class="item titulo_grupo_radio"> 
+                          Carrera de inter&eacute;s
+                        </div>
+
+                        <ion-radio ng-repeat="carrera in vm.listaCarreras"
+                                   ng-value="carrera.valor"
+                                   ng-model="vm.user.carrera"
+                                   class="input_radio"
+                                   >
+                          <span style="white-space: normal;">{{ carrera.alias }}</span>
+                        </ion-radio>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <div class="col">
+                                <button class="button button-block button-positive button-assertive button-pequeno icon-left ion-edit" ng-click="vm.registrarse()"> Registrarse</button>
+                            </div>
+                        </div>
+                    </div>
+        </ion-pane>
+
   </ion-content>
 </ion-view>

@@ -1,35 +1,24 @@
-<ion-view>
-  <ion-nav-title>
-  		<img src="assets/img/uninova_header.png" height="30" style="margin: 4px;vertical-align:middle"><span>UNINOVA</span>
-  </ion-nav-title>
+<ion-view cache-view="false">
   <ion-content scroll="false">
+		<div class="container" style="padding-bottom:0;background-image: url('assets/img/backuni.png');background-repeat: repeat-x;background-size: cover">
+				<a class="button button-icon icon ion-android-menu" ng-click="vm.menuizq()" style="left: 15px;position: absolute;top: 15px; color: #fff;"></a>
+		        <div class="panel_logo_principal"></div>
 
-		<div class="container-side-menu">
-		    <div class="btn-menu-principal" native-ui-sref="app.mision" native-options="{type: 'slide', direction:'up'}">
-				<button class="button button-icon blanco">
-	            	<i class="icon ion-home"></i> Misi&oacute;n y Visi&oacute;n
-	          	</button>    	
-		    </div>
-		    <div class="btn-menu-principal" native-ui-sref="app.oferta" native-options="{type: 'slide', direction:'up'}">
-				<button class="button button-icon blanco">
-	            	<i class="icon ion-university"></i> Oferta educativa
-	          	</button>		    	
-		    </div>
-		    <div class="btn-menu-principal" native-ui-sref="app.infraestructura" native-options="{type: 'slide', direction:'up'}">
-				<button class="button button-icon blanco">
-	            	<i class="icon ion-android-settings"></i> Instalaciones
-	          	</button>		    	
-		    </div>
-		    <div class="btn-menu-principal" native-ui-sref="app.ubicacion" native-options="{type: 'slide', direction:'up'}">
-				<button class="button button-icon blanco">
-	            	<i class="icon ion-location"></i> Ubicaci&oacute;n
-	          	</button>		    	
-		    </div>
-		    <div class="btn_completo" ng-click="vm.cargaDatosUsuario()" native-options="{type: 'slide', direction:'up'}">
-				<button class="button button-icon blanco">
-	            	<i class="icon ion-person"></i> Registro
-	          	</button>
-		    </div>
+		        <div class="slider_btn_carreras" ng-style="{ 'width' : ancho}">
+		            <ks-swiper-container swiper="swiper" on-ready="vm.onReadySwiper(swiper)" initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="3" space-between="5" pagination-clickable="false" override-parameters="{effect: 'coverflow', coverflow: {rotate: 50,stretch: 0,depth: 100,modifier: 1,slideShadows : false}}">
+		                
+		                <ks-swiper-slide id="admin" class="swiper-slide">		<img ng-src="assets/img/btn_carreras/aduanera.png">		<div class="txt_btn_principal">Administraci&oacute;n Aduanera</div></ks-swiper-slide>
+		                <ks-swiper-slide id="comunicacion" class="swiper-slide"><img ng-src="assets/img/btn_carreras/comunicacion.png">	<div class="txt_btn_principal">Comunicaci&oacute;n y Medios de Producci&oacute;n</div></ks-swiper-slide>
+		                <ks-swiper-slide id="contaduria" class="swiper-slide">	<img ng-src="assets/img/btn_carreras/contaduria.png">	<div class="txt_btn_principal">Contadur&iacute;a y Finanzas</div></ks-swiper-slide>
+		                <ks-swiper-slide id="derecho" class="swiper-slide">		<img ng-src="assets/img/btn_carreras/derecho.png">		<div class="txt_btn_principal">Derecho y Juicios Orales</div></ks-swiper-slide>
+		                <ks-swiper-slide id="diseno" class="swiper-slide">		<img ng-src="assets/img/btn_carreras/diseno.png">		<div class="txt_btn_principal">Dise&ntilde;o, Arte y Animaci&oacute;n Digital</div></ks-swiper-slide>
+		                <ks-swiper-slide id="gestion" class="swiper-slide">		<img ng-src="assets/img/btn_carreras/gestion.png">		<div class="txt_btn_principal">Gesti&oacute;n de Empresas</div></ks-swiper-slide>
+		                <ks-swiper-slide id="linguistica" class="swiper-slide">	<img ng-src="assets/img/btn_carreras/linguistica.png">	<div class="txt_btn_principal">Ling&uuml;&iacute;stica</div></ks-swiper-slide>
+		                <ks-swiper-slide id="periodismo" class="swiper-slide">	<img ng-src="assets/img/btn_carreras/periodismo.png">	<div class="txt_btn_principal">Periodismo</div></ks-swiper-slide>
+		                <ks-swiper-slide id="planeacion" class="swiper-slide">	<img ng-src="assets/img/btn_carreras/planeacion.png">	<div class="txt_btn_principal">Planeaci&oacute;n y Evaluaci&oacute;n Educativa</div></ks-swiper-slide>
+		                <ks-swiper-slide id="urbanismo" class="swiper-slide">	<img ng-src="assets/img/btn_carreras/urbanismo.png">	<div class="txt_btn_principal">Urbanismo Sustentable</div></ks-swiper-slide>
+		            </ks-swiper-container>
+		        </div>
 		</div>
   </ion-content>
 </ion-view>

@@ -1,26 +1,40 @@
-<ion-view view-title="Iniciar sesi&oacute;n">
-  <ion-content>
-    <div class="list">
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Correo electr&oacute;nico</span>
-        <input type="email" ng-model="vm.user.email">
-      </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">No. registro</span>
-        <input type="text" ng-model="vm.user.num_registro">
-      </label>
-    </div>
-    <div class="padding">
-      <button class="button button-block button-positive" ng-click="vm.login()">
-        Iniciar sesi&oacute;n
-      </button>
-      <p class="text-center">
-        <a href="#/forgot-password">Obtener ID</a>
-      </p>
+<ion-view cache-view="false">
+  <ion-content scroll="false">
 
-      <br>
-      <button class="button button-block button-positive" native-ui-sref="app.registro" native-options="{type: 'slide', direction:'up'}">Registrarse</button>
+        <ion-pane class="fondo_login" style="height:55%; position:relative;">
+            <a class="button button-icon icon ion-android-menu" ng-click="vm.menuizq()" style="left: 15px;position: absolute;top: 15px;"></a>
+            <div class="logo_login"></div>
+        </ion-pane>
 
-    </div>
+        <ion-pane style="position:relative;">
+                    <div class="list list-inset" style="margin-top: 0; margin-bottom: 0; background-color: transparent;">
+                        <label class="item item-input input_login">
+                            <span class="input-label" style="width:1px;"><i class="icon ion-android-mail medium"></i> E mail</span>
+                            <input type="email" ng-model="vm.loginUser.email">
+                        </label>
+                        <label class="item item-input input_login-ultimo">
+                            <span class="input-label" style="width:1px;"><i class="icon ion-calculator medium"></i> ID registro</span>
+                            <input type="text" ng-model="vm.loginUser.num_registro">
+                        </label>
+                        <div class="row">
+                            <div class="col">
+                                <button class="button button-block button-positive button-assertive button-pequeno icon-left ion-log-in" ng-click="vm.login()"> Iniciar sesi&oacute;n</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <button class="button button-clear button-block button-positive button-assertive icon-left ion-edit" native-ui-sref="app.registro" native-options="{type: 'slide', direction:'left'}">Registrarse</button>
+                            </div>
+                            <div class="col">
+                                <button class="button button-clear button-block button-positive button-dark icon-left ion-person" ng-click="vm.obtenerID()">Recuperar ID</button>
+                            </div>
+                        </div>
+
+                    </div>                    
+        </ion-pane>
+
+
+
   </ion-content>
 </ion-view>

@@ -5,10 +5,10 @@
         .module('uninova')
         .config(config);
 
-    config.$inject = ['$stateProvider', '$urlRouterProvider', '$ionicNativeTransitionsProvider'];
+    config.$inject = ['$stateProvider', '$urlRouterProvider', '$ionicNativeTransitionsProvider', 'ionGalleryConfigProvider'];
 
 
-    function config($stateProvider, $urlRouterProvider, $ionicNativeTransitionsProvider) {
+    function config($stateProvider, $urlRouterProvider, $ionicNativeTransitionsProvider, ionGalleryConfigProvider) {
 
 	    //$ionicNativeTransitionsProvider.enable(false);
 	    //$ionicNativeTransitions.enable(true);
@@ -19,13 +19,21 @@
 	        duration: '500'
 	    });*/
 
+		ionGalleryConfigProvider.setGalleryConfig({
+                  action_label: 'Cerrar',
+                  toggle: false,
+                  row_size: 2,
+                  fixed_row_size: true
+		});
 
 		$stateProvider
 
 		.state('app', {
 			url: '/app',
 			abstract: true,
-			templateUrl: 'app/shared/layout/container.html'
+			templateUrl: 'app/components/contenedor/container.html',
+			controller : 'ContainerController',
+			controllerAs : 'vm'
 		})
 		.state('app.main', {
 			url          : '/main',
@@ -37,36 +45,22 @@
 		      }
 		    }
 		})
-		.state('app.mision', {
-			url          : '/mision',
+		.state('app.detalle_carrera', {
+			url          : '/detalle_carrera:/:id',
+		    nativeTransitions: {
+		        "type": "slide",
+		        "direction": "up"
+		    },
 		    views: {
 		      'main': {
-		        templateUrl  : 'app/components/mision-vision/mision-vision.html',
-				controller   : 'MisionVisionController',
+		        templateUrl  : 'app/components/oferta-educativa/detalle-oferta.html',
+				controller   : 'DetalleOfertaController',
 				controllerAs : 'vm'
 		      }
 		    }
 		})
-		.state('app.oferta', {
-			url          : '/oferta',
-		    views: {
-		      'main': {
-		        templateUrl  : 'app/components/oferta-educativa/oferta-principal.html',
-				controller   : 'OfertaPrincipalController',
-				controllerAs : 'vm'
-		      }
-		    }
-		})
-		.state('app.infraestructura', {
-			url          : '/infraestructura',
-		    views: {
-		      'main': {
-		        templateUrl  : 'app/components/infraestructura/infraestructura.html',
-				controller   : 'InfraestructuraController',
-				controllerAs : 'vm'
-		      }
-		    }
-		})
+
+
 		.state('app.ubicacion', {
 			url          : '/ubicacion',
 		    views: {
@@ -97,8 +91,8 @@
 		      }
 		    }
 		})
-		.state('app.usuario_registrado', {
-			url          : '/usuario_registrado',
+		.state('app.perfil_usuario', {
+			url          : '/perfil_usuario',
 		    views: {
 		      'main': {
 		        templateUrl  : 'app/components/usuario/datos-usuario.html',
@@ -107,7 +101,16 @@
 		      }
 		    }
 		})
-
+		.state('app.galeria', {
+			url          : '/galeria',
+		    views: {
+		      'main': {
+		        templateUrl  : 'app/components/galeria/galeria.html',
+				controller   : 'GaleriaController',
+				controllerAs : 'vm'
+		      }
+		    }
+		})
 
 		$urlRouterProvider.otherwise('/app/main');
     }

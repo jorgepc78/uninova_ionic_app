@@ -5,9 +5,9 @@
         .module('uninova')
         .controller('RegistroController', RegistroController);
 
-    RegistroController.$inject = ['$state', '$ionicLoading', '$ionicPopup', '$ionicHistory', 'Prospecto'];
+    RegistroController.$inject = ['$state', '$ionicLoading', '$ionicPopup', '$ionicHistory', 'ProspectoService'];
 
-    function RegistroController($state, $ionicLoading, $ionicPopup, $ionicHistory, Prospecto) {
+    function RegistroController($state, $ionicLoading, $ionicPopup, $ionicHistory, ProspectoService) {
 
             var vm = this;
             vm.user = {
@@ -16,13 +16,21 @@
                 email     : '',
                 carrera   : '',
                 fecha_alta: '',
+                foto      : '',
                 num_registro: 0
             }
             
             vm.listaCarreras = [
-                {valor: 'derecho', alias: 'Lic. en Derecho'},
-                {valor: 'gestion_empresas', alias: 'Lic. en Gestión de empresas'},
-                {valor: 'admon_aduanal', alias: 'Lic. en Administración aduanal'}
+                {valor : 'admin',        alias: 'Administración Aduanera'},
+                {valor : 'comunicacion', alias: 'Comunicación y Medios de Producción'},
+                {valor : 'contaduria',   alias: 'Contaduría y Finanzas'},
+                {valor : 'derecho',      alias: 'Derecho y Juicios Orales'},
+                {valor : 'diseno',       alias: 'Diseño, Arte y Animación Digital'},
+                {valor : 'gestion',      alias: 'Gestión de Empresas'},
+                {valor : 'linguistica',  alias: 'lingüística'},
+                {valor : 'periodismo',   alias: 'Periodismo'},
+                {valor : 'planeacion',   alias: 'Planeación y Evaluación Educativa'},
+                {valor : 'urbanismo',    alias: 'Urbanismo Sustentable'}
             ];
 
             vm.registrarse = registrarse;
@@ -30,46 +38,50 @@
             function registrarse() {
             
                     $ionicLoading.show({
-                      template: 'Realizando el registro'
+                        template: '<p class="item-icon-left">Realizando el registro<ion-spinner icon="lines"/></p>'
                     });
 
-                    Prospecto
-                    .create({
-                        nombres    : vm.user.nombres,
-                        apellidos  : vm.user.apellidos,
-                        email      : vm.user.email,
-                        carrera    : vm.user.carrera.alias,
-                        num_registro: 0,
-                        fecha_alta : new Date()
+                    ProspectoService.alta(vm.user)
+                    .success(function (nuevo_prospecto) {
+                            $ionicLoading.hide();
+
+                            if(nuevo_prospecto.id === undefined)
+                            {
+                                    var alertPopup = $ionicPopup.alert({
+                                        title: 'Error',
+                                        template: 'No se ha podido realizar el registro por problemas de conexi&oacute;n con el servidor',
+                                        okType: 'button-assertive'
+                                    });
+                            }
+                            else
+                            {
+                                    vm.user = {
+                                        id          : nuevo_prospecto.id,
+                                        nombres     : nuevo_prospecto.nombres,
+                                        apellidos   : nuevo_prospecto.apellidos,
+                                        email       : nuevo_prospecto.email,
+                                        carrera     : nuevo_prospecto.carrera,
+                                        num_registro: nuevo_prospecto.num_registro,
+                                        foto        : ''
+                                    };
+
+                                    window.localStorage.setItem("profile", JSON.stringify(vm.user));
+
+                                    var alertPopup = $ionicPopup.alert({
+                                        title: 'Registro realizado',
+                                        template: 'Se ha enviado un n&uacute;mero de identificaci&oacute;n a tu correo electr&oacute;nico, el cual debes ingresar junto a tu email cuando quieras iniciar sesi&oacute;n',
+                                        okType: 'button-assertive'
+                                    });
+                                    
+                                    alertPopup.then(function(res) {
+                                        $ionicHistory.nextViewOptions({
+                                          disableBack: true
+                                        });
+                                        $state.go('app.main');
+                                    });                                
+                            }
                     })
-                    .$promise
-                    .then(function(nuevo_prospecto) {
-                        $ionicLoading.hide();
-
-                        vm.user = {
-                            nombres   : nuevo_prospecto.nombres,
-                            apellidos : nuevo_prospecto.apellidos,
-                            email     : nuevo_prospecto.email,
-                            carrera   : nuevo_prospecto.carrera,
-                            num_registro: nuevo_prospecto.num_registro
-                        };
-
-                        window.localStorage.setItem("profile", JSON.stringify(vm.user));
-
-                        var alertPopup = $ionicPopup.alert({
-                            title: 'Registro realizado',
-                            template: 'Se ha enviado un numero de identificacion a tu correo electronico, el cual debes ingresar junto a tu email cuando quieras registrarte de nuevo'
-                        });
-                        
-                        alertPopup.then(function(res) {
-                            $ionicHistory.nextViewOptions({
-                              disableBack: true
-                            });
-                            $state.go('app.main');
-                        });
-
-                    })
-                    .catch(function(error) {
+                    .error(function(data, status, headers, config) {
                         $ionicLoading.hide();
                           if(error.status == 413)
                             alert("El tamaño del archivo de imagen es muy grande");

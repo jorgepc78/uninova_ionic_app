@@ -1,0 +1,14 @@
+Ejecutar cada uno de estos comandos:
+
+- cordova build --release android
+
+Este comando es para crear la llave de encriptación de la app. responder todas las preguntas que pide
+- keytool -genkey -v -keystore uninova-app-key.keystore -alias uninova_app -keyalg RSA -keysize 2048 -validity 10000
+
+Este comando es para firmar la app
+- "C:\Program Files\Java\jdk1.8.0_25\bin\jarsigner.exe" -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore C:\proyectosweb\uninova\uninova_movil\uninova-app-key.keystore android-armv7-release-unsigned.apk uninova_app
+- "C:\Program Files\Java\jdk1.8.0_25\bin\jarsigner.exe" -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore C:\proyectosweb\uninova\uninova_movil\uninova-app-key.keystore android-x86-release-unsigned.apk uninova_app
+
+Por ultimo optimizar el apk y generar la version final
+- "C:\Users\Jorge\AppData\Local\Android\sdk\build-tools\23.0.3\zipalign.exe" -v 4 android-armv7-release-unsigned.apk uninova-armv7.apk
+- "C:\Users\Jorge\AppData\Local\Android\sdk\build-tools\23.0.3\zipalign.exe" -v 4 android-x86-release-unsigned.apk uninova-x86.apk

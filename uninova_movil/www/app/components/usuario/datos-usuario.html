@@ -1,33 +1,52 @@
-<ion-view view-title="Tus datos">
-  <ion-content>
+<ion-view cache-view="false" view-title="Mi perfil">
+   <!-- <ion-nav-bar class="bar-assertive">
+    <ion-nav-buttons side="left">
+      <button class="button button-icon icon ion-android-menu" ng-click="vm.menuizq()"></button>
+    </ion-nav-buttons>
+   </ion-nav-bar> -->
 
-      <ion-list>
-          <ion-item class="profile-item">
-              <div class="profile-picture big-profile-picture">
-                <img src="{{vm.usuario.foto}}">
-              </div>
-              <div class="profile-info"><a class="button button-icon icon ion-camera"></a></div>
-              <h2 class="profile-name dark">{{vm.usuario.nombres}}</h2>
-              <div class="profile-info">{{vm.usuario.apellidos}}</div>
-          </ion-item>
-          <ion-item class="item-icon-left">
-              <i class="icon ion-email"></i><span>{{vm.usuario.email}}</span>
-          </ion-item>
-          <ion-item class="item-icon-left">
-              <i class="icon ion-university"></i><span>{{vm.usuario.carrera}}</span>
-          </ion-item>
-          <ion-item class="item-icon-left">
-              <i class="icon ion-key"></i><span>{{vm.usuario.num_registro}}</span>
-          </ion-item>
-      
-      </ion-list>
+   <ion-header-bar class="bar-assertive" align-title="center">
+     <div class="buttons">
+       <button class="button button-icon icon ion-android-menu" ng-click="vm.menuizq()"></button>
+     </div>
+     <h1 class="title">Mi perfil</h1>
+   </ion-header-bar>
+   
+    <ion-content scroll="false">
 
-      <br>
-      <div class="padding">
-        <button class="button button-block button-positive" ng-click="vm.logout()">Cerrar sesi&oacute;n</button>
-      </div>
+          <ion-list type="list-inset">
 
+                <div class="profile-picture">
+                  <img src="{{vm.usuario.foto}}">
+                </div>
+                <div class="profile-item">
+                    <a class="button button-icon icon ion-camera" ng-click="vm.tomarFoto()"></a>
+                </div>
+                <div class="profile-item">
+                  <span class="profile-name dark">{{vm.usuario.nombres}}</span>
+                </div>
+                <div class="profile-item">{{vm.usuario.apellidos}}</div>
 
+                <ion-item class="item item-icon-left input_login">
+                    <i class="icon ion-pound"></i>{{vm.usuario.num_registro}}
+                </ion-item>
+                <ion-item class="item item-icon-left input_login">
+                    <i class="icon ion-email"></i>{{vm.usuario.email}}
+                </ion-item>
+                <ion-item class="item item-icon-left input_login-ultimo">
+                    <i class="icon ion-ios-checkmark"></i><span style="white-space: normal;">{{ vm.carrera_alias }}</span>
+                </ion-item>
 
-  </ion-content>
+          </ion-list>
+
+        <div class="row">
+            <div class="col">
+                <button class="button button-block button-positive button-small button-pequeno button-dark icon-left ion-edit" ng-click="vm.modal.show()">Editar</button>
+            </div>
+            <div class="col">
+                <button class="button button-block button-positive button-small button-pequeno button-assertive icon-left ion-log-out" ng-click="vm.logout()">Cerrar sesi&oacute;n</button>
+            </div>
+        </div>
+
+    </ion-content>
 </ion-view>

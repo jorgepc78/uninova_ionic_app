@@ -5,17 +5,18 @@
         .module('uninova')
         .controller('UbicacionController', UbicacionController);
 
-    UbicacionController.$inject = ['$state'];
+    UbicacionController.$inject = ['$state', '$ionicSideMenuDelegate'];
 
-    function UbicacionController($state) {
+    function UbicacionController($state, $ionicSideMenuDelegate) {
 
             var vm = this;
+            vm.menuizq   = menuizq;
 
             inicia();
 
             function inicia() {
         
-            	var myLatlng = new google.maps.LatLng(18.549121, -88.296420);
+            	var myLatlng = new google.maps.LatLng(18.547879, -88.296309);
         
                 var mapOptions = {
                   center: myLatlng,
@@ -31,7 +32,12 @@
                 });
 
                 vm.map = map;
+                google.maps.event.trigger(vm.map,'resize');
             
+            };
+
+            function menuizq() {
+                $ionicSideMenuDelegate.toggleLeft();
             };
     };
 

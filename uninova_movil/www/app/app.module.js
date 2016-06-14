@@ -4,6 +4,8 @@
     angular.module('uninova', [
         'ionic',
         'ionic-native-transitions',
-        'lbServices'
+        'ksSwiper',
+        'ion-gallery',
+        'ngCordova'
     ]);
 })();

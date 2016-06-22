@@ -12,8 +12,6 @@
             var vm = this;
 
             vm.images = [       
-                {src: 'assets/img/galeria/fotos/infraestructura1.jpg', sub: 'Edificio 1'},
-                {src: 'assets/img/galeria/fotos/infraestructura2.jpg', sub: 'Edificio 2'},
                 {src: 'assets/img/galeria/fotos/uninova-galeria1.png', sub: 'Visita y promoción en las escuelas'},
                 {src: 'assets/img/galeria/fotos/uninova-galeria2.png', sub: 'Visita y promoción en las escuelas'},
                 {src: 'assets/img/galeria/fotos/uninova-galeria3.png', sub: 'Visita y promoción en las escuelas'},
